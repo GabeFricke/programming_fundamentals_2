@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Player Stats</title>
+</head>
+<body>
+<h1>Eli Stowers 2025 Stats</h1>
+
+{% if error %}
+    <p style="color:red;">{{ error }}</p>
+{% else %}
+    <h2>Averages</h2>
+    <p>Receptions: {{ rec_avg }}</p>
+    <p>Targets: {{ target_avg }}</p>
+    <p>Yards: {{ yards_avg }}</p>
+
+    <h2>All Game Data</h2>
+    <p>Receptions: {{ receptions }}</p>
+    <p>Targets: {{ targets }}</p>
+    <p>Yards: {{ yards }}</p>
+
+    {% if csv_created %}
+        <p>CSV file "midterm_project.csv" has been created in your project folder.</p>
+    {% endif %}
+{% endif %}
+</body>
+</html>
