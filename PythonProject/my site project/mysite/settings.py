@@ -1,0 +1,4 @@
+installed_apps= [
+    ...,
+    'statsappssapps',
+]
