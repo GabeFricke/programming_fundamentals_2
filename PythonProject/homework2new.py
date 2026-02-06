@@ -69,3 +69,107 @@ my_string = "I am going to the store"
 n = 2
 new_string = [w for w in my_string.split() if len(w) == n]
 print(new_string)
+
+import random
+class character:
+    def __init__(self, name, villian = False):
+        if villian:
+            self.type= random.choice(["Fire Lord Sozin", "Combustion Man", "Princess Azula", "Fire Lord Ozai"])
+        else:
+            self.type= random.choice(["Air Bender", "Earth Bender", "Fire Bender", "Water Bender", "Avatar", "Non Bender"])
+
+        self.name = name
+        if self.type == "Fire Lord Ozai":
+            self.attack = random.randint(15,18)
+            self.defense = random.randint(5,9)
+            self.speed =  random.randint(70,89)
+            self.health = random.randint(1,100)
+        if self.type == "Combustion Man":
+            self.health = random.randint(1,100)
+            self.defense = random.randint(4,7)
+            self.speed = random.randint(50,80)
+            self.attack = random.randint(14,17)
+        if self.type == "Princess Azula":
+            self.health = random.randint(1,100)
+            self.defense = random.randint(3,7)
+            self.speed = random.randint(70,90)
+            self.attack = random.randint(13,18)
+        if self.type == "Fire Lord Sozin":
+            self.health = random.randint(1,100)
+            self.defense = random.randint(4,8)
+            self.speed = random.randint(60,80)
+            self.attack = random.randint(13,16)
+        if self.type == "Air Bender":
+            self.attack = random.randint(8,12)
+            self.defense = random.randint(3,6)
+            self.health = random.randint(1,100)
+            self.speed = random.randint(80,99)
+        if self.type == "Earth Bender":
+            self.attack = random.randint( 12,15)
+            self.defense = random.randint(5,8)
+            self.health = random.randint(1,100)
+            self.speed = random.randint(50, 75)
+        if self. type == "Fire Bender":
+            self.attack = random.randint(11,14)
+            self.defense = random.randint(4,6)
+            self.health = random.randint(1,100)
+            self.speed =  random.randint(60,85)
+        if self.type == "Water Bender":
+            self.attack = random.randint(10,15)
+            self.defense = random.randint(5,7)
+            self.health = random.randint(1,100)
+            self.speed = random.randint(70,89)
+        if self.type == "Avatar":
+            self.attack = random.randint(15,20)
+            self.defense = random.randint(7,10)
+            self.health = random.randint(1,100)
+            self.speed = random.randint(90,99)
+        if self.type == "Non Bender":
+            self.attack = random.randint(1, 5)
+            self.defense = random.randint(1, 3)
+            self.health = random.randint(1,100)
+            self.speed = random.randint(30, 50)
+        self.level = 1
+        self.experience = 0
+    def level_up(self):
+        self.level += 1
+        self.attack += 2
+        self.defence += 1.5
+        self.health += 3
+        self.experience += 10
+    def __str__(self):
+        return "Name: " + self.name + " " + "Character: " + self.type + " " + "level: " + str(self.level) + " " + "Experience: " + str(self.experience) + " " + "Attack: " + str(self.attack) + " " + "Defense: " + str(self.defense) + " " + "Health: " + str(self.health) +" " + "Speed: " + str(self.speed)
+
+def battle(c1, c2):
+    h1 = c1.health
+    h2 = c2.health
+    print(f"{c1.name} health: {max(h1, 0)}")
+    print(f"{c2.name} health: {max(h2, 0)}")
+    print("   ")
+    while h1 > 0 and h2 > 0:
+
+        damage_to_c2 = max(c1.attack - c2.defense, 0)
+        damage_to_c1 = max(c2.attack - c1.defense, 0)
+
+        h2 -= damage_to_c2
+        h1 -= damage_to_c1
+
+        print(f"{c1.name} health: {max(h1, 0)}")
+        print(f"{c2.name} health: {max(h2, 0)}")
+        print("   ")
+
+    if h1 <= 0 and h2 <= 0:
+        print("It's a draw!")
+    elif h1 > 0:
+        print(f"{c1.name} wins!")
+    else:
+        print(f"{c2.name} wins!")
+
+c1= character("j", True)
+c2 = character("k", False)
+
+print(c1)
+print(c2)
+
+battle(c1, c2)
+
